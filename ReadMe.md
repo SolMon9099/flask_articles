@@ -1,28 +1,32 @@
-//python venv install
+# python venv install
 python -m venv venv
 
-//activate venv
+# activate venv
 .\venv\Scripts\activate
 
-//install flask
+# install flask
 pip install flask
 
-//install flask-sqlalchemy
+# install flask-sqlalchemy
 pip install flask-sqlalchemy
 
-//install mysqlclient
+# install mysqlclient
 pip install mysqlclient
 
-//install flask-marshmallow
+# install flask-marshmallow
 pip install flask-marshmallow
 
-//install marshmallow-sqlalchemy
+# install marshmallow-sqlalchemy
 pip install marshmallow-sqlalchemy
 
-//flask app run and debug
+# flask app run and debug
 F5 click and select Flask and copy-paste app.py path
 
-//create tables of db
+# create tables of db
  from app import app, db
  app.app_context().push()
  db.create_all()
+
+
+# creat react app
+npx create-react-app frontend
