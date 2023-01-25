@@ -23,8 +23,8 @@ pip install marshmallow-sqlalchemy
 F5 click and select Flask and copy-paste app.py path
 
 # create tables of db
- from app import app, db
- app.app_context().push()
+ from app import app, db.\
+ app.app_context().push().\
  db.create_all()
 
 
