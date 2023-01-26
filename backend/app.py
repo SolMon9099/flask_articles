@@ -2,8 +2,10 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/flask_db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -26,12 +28,12 @@ class ArticleSchema(ma.Schema):
         fields = ('id', 'title', 'body', 'date')
 
 article_schema = ArticleSchema()
-article_schema = ArticleSchema(many=True)
+articles_schema = ArticleSchema(many=True)
 
 @app.route('/get', methods = ['GET'])
 def get_articles():
     all_articles = Articles.query.all()
-    results = article_schema.dump(all_articles)
+    results = articles_schema.dump(all_articles)
     return jsonify(results)
 
 @app.route('/get/<id>', methods = ['GET'])
@@ -49,7 +51,7 @@ def add_article():
     db.session.commit()
     return article_schema.jsonify(articles)
 
-@app.route('/update/<id>/', methods = ['PUT'])
+@app.route('/update/<id>', methods = ['PUT'])
 def update_article(id):
     article = Articles.query.get(id)
     title = request.json['title']

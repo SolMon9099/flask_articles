@@ -30,3 +30,10 @@ F5 click and select Flask and copy-paste app.py path
 
 # creat react app
 npx create-react-app frontend
+
+# install Flask-Cors
+pip install Flask-Cors
+
+# install bootstrap
+In frontend folder.\
+npm install bootstrap
